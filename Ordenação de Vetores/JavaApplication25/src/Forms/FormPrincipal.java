@@ -5,15 +5,17 @@
  */
 package Forms;
 
+import Classes.Ordenacao;
+import java.util.Arrays;
+
 /**
  *
  * @author Luís Gustavo
  */
 public class FormPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormPrincipal
-     */
+    Ordenacao ordem;
+    
     public FormPrincipal() {
         initComponents();
     }
@@ -34,6 +36,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taVetor = new javax.swing.JTextArea();
         btInserir = new javax.swing.JButton();
+        lbOrdenado = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -63,6 +68,21 @@ public class FormPrincipal extends javax.swing.JFrame {
         btInserir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btInserir.setText("Inserir");
         btInserir.setName("btInserir"); // NOI18N
+        btInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInserirActionPerformed(evt);
+            }
+        });
+
+        lbOrdenado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbOrdenado.setText("Vetor Ordenado:");
+        lbOrdenado.setName("lbOrdenado"); // NOI18N
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,15 +90,17 @@ public class FormPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(lbOrdenado)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .addComponent(lbTamanho)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tfTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btInserir))
                     .addComponent(lbVetor))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,15 +114,28 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(lbVetor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbOrdenado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(416, 338));
+        setSize(new java.awt.Dimension(430, 396));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        if(Integer.parseInt(tfTamanho.getText()) > 0){
+            ordem = new Ordenacao();
+            ordem.setTamanho(Integer.parseInt(tfTamanho.getText()));
+            ordem.inicializa(Integer.parseInt(tfTamanho.getText()));
+            taVetor.setText(Arrays.toString(ordem.getV()));
+        }
+    }//GEN-LAST:event_btInserirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +176,9 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btInserir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbOrdenado;
     private javax.swing.JLabel lbTamanho;
     private javax.swing.JLabel lbVetor;
     private javax.swing.JTextArea taVetor;

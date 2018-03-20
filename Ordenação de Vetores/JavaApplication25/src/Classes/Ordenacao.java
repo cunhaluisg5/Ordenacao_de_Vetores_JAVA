@@ -14,14 +14,16 @@ import java.util.Random;
  */
 public class Ordenacao {
     private int tamanho;
-    private int []v = inicializa(tamanho);
+    private int []v;
 
     public Ordenacao() {
     }
 
-    public Ordenacao(int tamanho) {
+    public Ordenacao(int tamanho, int[] v) {
         this.tamanho = tamanho;
+        this.v = v;
     }
+
 
     public int getTamanho() {
         return tamanho;
@@ -30,15 +32,23 @@ public class Ordenacao {
     public void setTamanho(int tamanho) {
         this.tamanho = tamanho;
     }
+
+    public int[] getV() {
+        return v;
+    }
+
+    public void setV(int[] v) {
+        this.v = v;
+    }
     
-    public int[] inicializa(int tamanho){
+    
+    public void inicializa(int tamanho){
         int i;
-        int []v = new int[tamanho];
+        v = new int[tamanho];
         Random aleatorio = new Random();
         for(i=0; i<tamanho; i++){
             v[i] = aleatorio.nextInt(10);
         }
-        return v;
     }
     
     public void imprimeVetor(int []v){
