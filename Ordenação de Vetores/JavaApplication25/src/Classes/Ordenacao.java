@@ -51,7 +51,19 @@ public class Ordenacao {
         }
     }
     
-    public void imprimeVetor(int []v){
-        System.out.println(Arrays.toString(v));
-    }
+    public void selectionSort() {
+	for (int i = 0; i < v.length; i++) {
+		int posicaoMenor = i;
+		for (int j = (i + 1); j < v.length; j++) {
+			if (v[j] < v[posicaoMenor]) {
+				posicaoMenor = j;
+			}
+		}
+		if (v[i] != v[posicaoMenor]) {
+			int temp = v[i];
+			v[i] = v[posicaoMenor];
+			v[posicaoMenor] = temp;
+		}
+	}
+}
 }

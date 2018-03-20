@@ -38,7 +38,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         btInserir = new javax.swing.JButton();
         lbOrdenado = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taOrdenado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -59,6 +59,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         taVetor.setEditable(false);
         taVetor.setColumns(20);
+        taVetor.setFont(new java.awt.Font("Monospaced", 1, 13)); // NOI18N
         taVetor.setRows(5);
         taVetor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         taVetor.setName("taVetor"); // NOI18N
@@ -78,11 +79,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         lbOrdenado.setText("Vetor Ordenado:");
         lbOrdenado.setName("lbOrdenado"); // NOI18N
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        jScrollPane2.setViewportView(jTextArea1);
+        taOrdenado.setEditable(false);
+        taOrdenado.setColumns(20);
+        taOrdenado.setFont(new java.awt.Font("Monospaced", 1, 13)); // NOI18N
+        taOrdenado.setRows(5);
+        taOrdenado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        taOrdenado.setName("taOrdenado"); // NOI18N
+        jScrollPane2.setViewportView(taOrdenado);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,9 +94,9 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(lbOrdenado)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .addComponent(lbTamanho)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tfTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,8 +121,8 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbOrdenado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -134,6 +137,8 @@ public class FormPrincipal extends javax.swing.JFrame {
             ordem.setTamanho(Integer.parseInt(tfTamanho.getText()));
             ordem.inicializa(Integer.parseInt(tfTamanho.getText()));
             taVetor.setText(Arrays.toString(ordem.getV()));
+            ordem.selectionSort();
+            taOrdenado.setText(Arrays.toString(ordem.getV()));
         }
     }//GEN-LAST:event_btInserirActionPerformed
 
@@ -177,10 +182,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbOrdenado;
     private javax.swing.JLabel lbTamanho;
     private javax.swing.JLabel lbVetor;
+    private javax.swing.JTextArea taOrdenado;
     private javax.swing.JTextArea taVetor;
     private javax.swing.JTextField tfTamanho;
     // End of variables declaration//GEN-END:variables
